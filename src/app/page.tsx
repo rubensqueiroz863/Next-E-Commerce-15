@@ -1,9 +1,9 @@
-import Image from "next/image";
+import NavBar from '@/components/NavBar';
 
 export default function Home() {
   return (
-    <div className="">
-     
-    </div>
+    <main className="bg-slate-700 h-screen">
+     <NavBar/>
+    </main>
   );
 }
