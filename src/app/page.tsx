@@ -1,9 +1,7 @@
-import NavBar from '@/components/NavBar';
-
 export default function Home() {
   return (
-    <main className="bg-slate-700 h-screen">
-     <NavBar/>
-    </main>
+    <div>
+      <h1>Next E-Commerce 15</h1>
+    </div>
   );
 }
