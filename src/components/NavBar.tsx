@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SignedIn, SignedOut } from '@clerk/nextjs/app-beta';
+import { SignedIn, SignedOut } from '@clerk/nextjs';
 import { SignInButton, UserButton } from '@clerk/nextjs';
 
 function NavBar() {
