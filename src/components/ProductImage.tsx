@@ -19,7 +19,7 @@ export default function ProductImage({ product, fill }: ProductImageProps) {
                 loading ? "scale-110 blur-3xl grayscale"
                 : "scale-100 blur-none grayscale-0"
             }`}
-            onLoadingComplete={() => setLoading(false)}
+            onLoad={() => setLoading(false)}
         />
     ) : (
         <Image
@@ -31,7 +31,7 @@ export default function ProductImage({ product, fill }: ProductImageProps) {
                 loading ? "scale-110 blur-3xl grayscale"
                 : "scale-100 blur-none grayscale-0"
             }`}
-            onLoadingComplete={() => setLoading(false)}
+            onLoad={() => setLoading(false)}
         />
     );
 }

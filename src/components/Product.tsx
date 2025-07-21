@@ -15,7 +15,7 @@ export default function Product({ product } : ProductProps) {
                 <p className="w-40 truncate">{product.title}</p>
                 <p className="text-md text-teal-600">{product.price}</p>
             </div>
-            <button className="rounded-md bg-teal-600 text-white px-3.5 py-2.5 text-sm text-center">Adicionar ao Carrinho</button>
+            <button className="rounded-md cursor-pointer bg-teal-600 text-white px-3.5 py-2.5 text-sm text-center">Adicionar ao Carrinho</button>
         </div>
     );
 }
