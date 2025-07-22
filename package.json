@@ -12,15 +12,17 @@
     "@clerk/localizations": "^3.20.1",
     "@clerk/nextjs": "^6.25.4",
     "@prisma/client": "^6.12.0",
-    "git": "^0.1.5",
+    "@stripe/stripe-js": "^7.5.0",
+    "clsx": "^2.1.1",
     "install": "^0.13.0",
-    "mongodb": "^6.17.0",
     "next": "15.4.1",
     "npm": "^11.4.2",
     "prisma": "^6.12.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "svix": "^1.69.0"
+    "stripe": "^11.18.0",
+    "svix": "^1.69.0",
+    "zustand": "^5.0.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

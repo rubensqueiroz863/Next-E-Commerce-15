@@ -1,15 +1,32 @@
 import { ProductType } from "@/types/ProductType";
 import Product from "@/app/components/Product";
+import Stripe from "stripe";
 
 //Consome a api de produtos 
-async function getProducts() {
-  const res = await fetch("https://fakestoreapi.com/products/");
+async function getProducts(): Promise<ProductType[]> {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+    apiVersion: '2022-11-15',
+  });
 
-  if (!res.ok) {
-    throw new Error("Falha ao consumir dados da api.");
-  }
+  const products = await stripe.products.list();
+  const formatedProducts = await Promise.all(
+    products.data.map(async (product) => {
+      const price = await stripe.prices.list({
+        product: product.id,
+      });
+      return {
+        id: product.id,
+        price: price.data[0].unit_amount,
+        name: product.name,
+        image: product.images[0],
+        description: product.description,
+        currency: price.data[0].currency,
+      }
+    })
+  )
 
-  return res.json();
+  return formatedProducts;
+
 }
 
 export default async function Home() {
