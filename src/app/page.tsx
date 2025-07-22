@@ -1,5 +1,5 @@
 import { ProductType } from "@/types/ProductType";
-import Product from "@/components/Product";
+import Product from "@/app/components/Product";
 
 //Consome a api de produtos 
 async function getProducts() {
