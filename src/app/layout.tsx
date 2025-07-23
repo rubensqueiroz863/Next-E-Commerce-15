@@ -5,6 +5,7 @@ import "./globals.css";
 import NavBar from '@/app/components/NavBar';
 import { ClerkProvider } from "@clerk/nextjs";
 import { ptBR } from "@clerk/localizations";
+import Hydrate from "./components/Hydrate";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,10 +31,11 @@ export default function RootLayout({
     <ClerkProvider localization={ptBR}>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-700`}
-        >
-          <NavBar/>
-          <main className="bg-slate-700 h-screen p-16 overflow-x-hidden">{children}</main>
+          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-700`}>
+          <Hydrate>
+            <NavBar/>
+            <main className="bg-slate-700 h-screen p-16 overflow-x-hidden">{children}</main>
+          </Hydrate>
         </body>
       </html>
     </ClerkProvider>

@@ -43,7 +43,7 @@ export default function Cart() {
                     <div onClick={(e) => e.stopPropagation()} className="absolute bg-slate-600 right-0 top-0 w-1/3 h-screen p-12 overflow-y-auto">
                         <h1>Meu carrinho</h1>
                         {useStore.cart.map((item) => (
-                            <div key={item.id}>{item.name}</div>
+                            item.id ? <div key={item.id}>{item.name}</div> : null
                         ))}
                     </div>
                 </div>
