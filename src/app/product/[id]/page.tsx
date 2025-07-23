@@ -21,11 +21,8 @@ async function getProduct(id: string) {
   };
 }
 
-export default async function Product({
-  params,
-}: {
-  params: { id: string };
-}) {
+// Aqui removi a tipagem para evitar conflitos
+export default async function Product({ params }: any) {
   const { id } = params;
   const product = await getProduct(id);
 
