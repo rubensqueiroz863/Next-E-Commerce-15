@@ -3,6 +3,12 @@ import ProductImage from "@/app/components/ProductImage";
 import { formatPrice } from "@/lib/utils";
 import Stripe from "stripe";
 
+type ProductPageProps = {
+  params: {
+    id: string;
+  };
+};
+
 async function getProduct(id: string) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     apiVersion: "2022-11-15",
@@ -22,8 +28,8 @@ async function getProduct(id: string) {
 }
 
 // Aqui removi a tipagem para evitar conflitos
-export default async function Product({ params }: any) {
-  const { id } = params;
+export default async function Product({ params }: ProductPageProps) {
+  const { id } = await params;
   const product = await getProduct(id);
 
   return (

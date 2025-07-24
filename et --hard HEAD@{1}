@@ -1,0 +1,18 @@
+[33mb46b304[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: reset: moving to HEAD@{3}
+[33mc420170[m HEAD@{1}: reset: moving to HEAD@{3}
+[33ma194448[m HEAD@{2}: reset: moving to HEAD@{3}
+[33m716d07d[m HEAD@{3}: reset: moving to HEAD@{3}
+[33mb46b304[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{4}: reset: moving to HEAD~3
+[33mc420170[m HEAD@{5}: commit: Next15 E-Commerce v2.8 Correção de erros
+[33ma194448[m HEAD@{6}: commit: Next15 E-Commerce v2.7 Correção de erros
+[33m716d07d[m HEAD@{7}: commit: Next15 E-Commerce v2.6 Correção de erros
+[33mb46b304[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{8}: commit: Next15 E-Commerce v2.5 Correção de erros de build
+[33mcc70155[m HEAD@{9}: commit: Next15 E-Commerce v2.4 Sistema de detalhamento de produto
+[33mbaf10cd[m HEAD@{10}: commit: Next15 E-Commerce v2.3 Sistema de carrinho melhorado
+[33m28bb75e[m HEAD@{11}: commit: Next15 E-Commerce v2.2 Sistema de carrinho
+[33mdc90dfd[m HEAD@{12}: commit: Next15 E-Commerce v2.1 Melhoria de interface e icone de carrinho
+[33mdca72df[m HEAD@{13}: commit: Next15 E-Commerce v2.0 Adicionando webhook
+[33md8d847e[m HEAD@{14}: commit: Next15 E-Commerce v1.9 Subindo modelo prisma
+[33m07551b3[m HEAD@{15}: commit: Next15 E-Commerce v1.8 Adicionando banco de dados
+[33m2e13139[m HEAD@{16}: commit: Next15 E-Commerce v1.7 Adição de login por clerk
+[33m54f5d2f[m HEAD@{17}: clone: from https://github.com/rubensqueiroz863/Next-E-Commerce-15
