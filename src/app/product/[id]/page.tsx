@@ -18,7 +18,13 @@ async function getProduct(id: string) {
   };
 }
 
-export default async function Product({ params }: { params: { id: string } }) {
+interface ProductProps {
+  params: {
+    id: string;
+  };
+}
+
+export default async function Product({ params }: ProductProps) {
   const { id } = await params;
 
   const product = await getProduct(id);

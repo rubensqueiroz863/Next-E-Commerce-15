@@ -1,6 +1,7 @@
-'use client'
-import { useCartStore } from '@/store';
-import { useEffect } from 'react';
+'use client';
+
+import { useCartStore } from "@/store";
+import { useEffect } from "react";
 
 export default function Checkout() {
   const cartStore = useCartStore();
@@ -18,12 +19,11 @@ export default function Checkout() {
     }).then((res) => { return res.json() }).then((data) => {
       console.log(data.paymentIntent);
     });
-
   }, [cartStore.cart, cartStore.paymentIntent]);
 
-  return (
+  return ( 
     <div>
-      <h1>Checkout</h1>
+      Checkout
     </div>
   );
 }
