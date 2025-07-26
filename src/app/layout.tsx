@@ -34,7 +34,7 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-700`}>
           <Hydrate>
             <NavBar/>
-            <main className="bg-slate-700 h-screen p-16 overflow-x-hidden">{children}</main>
+            <main className="bg-slate-700 h-screen p-16 overflow-y-auto overflow-x-hidden">{children}</main>
           </Hydrate>
         </body>
       </html>

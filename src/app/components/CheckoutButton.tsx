@@ -18,7 +18,7 @@ export default function CheckoutButton({ totalPrice }: CheckoutButtonProps) {
     const handleCheckout = async () => {
         if(!user) {
             cartStore.toggleCart();
-            router.push(`/sign-in?redirectUrl='/'`);
+            router.push(`/sign-in?redirectUrl=/`);
             return;
         }
         cartStore.setCheckout('checkout')

@@ -21,7 +21,7 @@ initialProducts: ProductType[];
 
     });
 
-    const lastProductId = products[products.length = 1]?.id;
+    const lastProductId = products[products.length - 1]?.id;
 
     const loadMoreProducts = useCallback(async () => {
         setIsLoading(true);
@@ -52,7 +52,7 @@ initialProducts: ProductType[];
             ))}
             {hasMore && (
                 <div ref={ref}>
-                    Carregando mais registros
+                    Carregando mais registros...
                 </div>
             )}
         </>

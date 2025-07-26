@@ -9,7 +9,9 @@ export async function fetchProducts({
 }: {
   lastProductId?: string | undefined; 
 }) {
-  const params = await lastProductId ? { starting_after: lastProductId, limit: 12 }: {};
+  const params = await lastProductId 
+    ? { starting_after: lastProductId, limit: 4 }
+  : { limit: 12 };
 
   const { data: products, has_more } = await stripe.products.list(params);
 
