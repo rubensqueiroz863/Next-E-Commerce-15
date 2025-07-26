@@ -17,6 +17,7 @@ export default function CartDrawer() {
       onClick={() => useStore.toggleCart()}
       className='fixed w-full h-screen bg-black/25 left-0 top-0 z-50'
     >
+      
       <div
         onClick={(e) => e.stopPropagation()}
         className='absolute overflow-x-hidden w-2/3 sm:w-4/5 md:w-2/5 lg:1/5 xl:1/5 2xl:1/5 bg-slate-600 right-0 top-0 h-screen p-8 overflow-y-auto'
