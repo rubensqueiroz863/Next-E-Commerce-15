@@ -2,13 +2,13 @@ import AddCart from "@/app/components/AddCart";
 import ProductImage from "@/app/components/ProductImage";
 import { formatPrice } from "@/lib/utils";
 import { stripe } from "@/lib/stripe";
-import { ParsedUrlQuery } from 'querystring'
 
 async function getProduct(id: string) {
   const product = await stripe.products.retrieve(id);
   const price = await stripe.prices.list({
     product: product.id,
   });
+
   return {
     id: product.id,
     price: price.data[0].unit_amount,
@@ -19,16 +19,7 @@ async function getProduct(id: string) {
   };
 }
 
-interface Params extends ParsedUrlQuery {
-  id: string;
-}
-
-interface Props {
-  params: Params;
-}
-
-
-export default async function Product({ params }: Props) {
+export default async function Product({ params }: { params: { id: string } }) {
   const { id } = await params;
 
   const product = await getProduct(id);
