@@ -20,11 +20,11 @@ export default function CartDrawer() {
       
       <div
         onClick={(e) => e.stopPropagation()}
-        className='absolute overflow-x-hidden w-2/3 sm:w-4/5 md:w-2/5 lg:1/5 xl:1/5 2xl:1/5 bg-slate-600 right-0 top-0 h-screen p-8 overflow-y-auto'
+        className='absolute overflow-x-hidden w-2/3 sm:w-4/5 md:w-2/5 lg:1/5 xl:1/5 2xl:1/5 bg-neutral-800 right-0 top-0 h-screen p-8 overflow-y-auto'
       >
         <button
           onClick={() => useStore.toggleCart()}
-          className='font-bold text-sm text-teal-600'
+          className='font-bold text-sm text-white'
         >
           Voltar para loja
         </button>
@@ -43,7 +43,7 @@ export default function CartDrawer() {
                 <div>
                   <h2 className='w-42 truncate'>{item.name}</h2>
                   <h2>Quantidade: {item.quantity}</h2>
-                  <p className='text-teal-600 text-sm font-bold'>
+                  <p className='text-green-600 text-sm font-bold'>
                     {formatPrice(item.price)}
                   </p>
                   <button

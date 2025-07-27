@@ -26,7 +26,8 @@ export default function Cart() {
         </svg>
         <span
           className='
-            bg-teal-600 
+            text-white
+            bg-red-600 
             text-sm 
             font-bold 
             rounded-full 

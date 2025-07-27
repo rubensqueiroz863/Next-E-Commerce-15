@@ -26,12 +26,12 @@ export default function CheckoutButton({ totalPrice }: CheckoutButtonProps) {
 
     return (
         <div>
-            <p className='text-teal-600 font-bold'>
+            <p className='text-green-600 font-bold'>
                 Total: {formatPrice(totalPrice)}
             </p>
             <button 
                 onClick={handleCheckout}
-                className='w-full rounded-md bg-teal-600 text-white py-2 mt-2'
+                className='w-full rounded-md bg-neutral-600 text-white py-2 mt-2'
             >
                 Finalizar Compra
             </button>

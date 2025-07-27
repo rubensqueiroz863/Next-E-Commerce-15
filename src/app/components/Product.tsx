@@ -11,13 +11,13 @@ type ProductProps = {
 export default function Product({ product } : ProductProps) {
     return (
         <Link href={`/product/${product.id}`}>
-            <div className="flex flex-col shadow-lg h-96 bg-slate-800 p-5 text-gray-300">
+            <div className="flex rounded-sm flex-col shadow-lg h-96 bg-neutral-900 p-5 text-gray-300">
                 <div className="relative max-h-72 flex-1">
                     <ProductImage product={product} fill></ProductImage>
                 </div>
                 <div className="flex justify-between font-bold my-3">
                     <p className="w-40 truncate">{product.name}</p>
-                    <p className="text-md text-teal-600">{formatPrice(product.price)}</p>
+                    <p className="text-md text-green-600">{formatPrice(product.price)}</p>
                 </div>
                 <AddCart product={product}/>
             </div>
