@@ -32,6 +32,7 @@ type EmailAddressType = {
 async function handler(request: Request) {
   const payload = await request.json();
   const headersList = headers();
+  console.log('✅ Webhook recebido:', JSON.stringify(payload, null, 2));
   const heads = {
     'svix-id': (await headersList).get('svix-id'),
     'svix-timestamp': (await headersList).get('svix-timestamp'),
@@ -66,27 +67,35 @@ async function handler(request: Request) {
       apiVersion: '2022-11-15',
     });
 
+    console.log('🔄 Criando cliente no Stripe:', first_name, last_name);
+
     const customer = await stripe.customers.create({
       name: `${first_name} ${last_name}`,
       email: email_addresses ? email_addresses[0].email_address : '',
     });
 
-    await prisma.user.upsert({
-      where: { externalId: id as string },
-      create: {
-        externalId: id as string,
-        stripeCustomerId: customer.id,
-        attributes,
-      },
-      update: {
-        attributes,
-      },
-    });
+    console.log('✅ Cliente criado no Stripe:', customer.id);
+    try {
+      await prisma.user.upsert({
+        where: { externalId: id as string },
+        create: {
+          externalId: id as string,
+          stripeCustomerId: customer.id,
+          attributes,
+        },
+        update: {
+          attributes,
+        },
+      });
+      console.log("usuario gravado com sucesso.");
+    } catch (err) {
+      console.error("Erro ao gravar no banco: ", err);
+    }
+    
   }
+  console.log('✅ Evento verificado com sucesso:', evt.type);
 
   return NextResponse.json({}, { status: 200 });
 }
 
-export const GET = handler;
 export const POST = handler;
-export const PUT = handler;
