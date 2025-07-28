@@ -40,4 +40,4 @@ model Product {
     image       String?
     quantity    Float   @default(0)
     orders      Order[]
-} 
+}

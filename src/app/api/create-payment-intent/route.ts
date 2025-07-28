@@ -15,23 +15,15 @@ export async function POST(req: Request) {
   const { userId } = await auth();
   const { items, payment_intent_id } = await req.json();
 
-  if (!userId) {
+  if(!userId){
     return new Response("Unauthorized", { status: 401 });
   }
 
-  // Busca o usuário no banco com base no ID do Clerk
-  const dbUser = await prisma.user.findUnique({
-    where: { externalId: userId },
-  });
-
-  if (!dbUser) {
-    return new Response("Usuário não encontrado no banco", { status: 404 });
-  }
-
+  const customerIdTemp = 'cus_OvJFglQZ0DNK3i';
   const total = calculateOrderAmount(items);
 
   const orderData = {
-    user: { connect: { id: dbUser.id } }, // Agora usando o ID real do banco
+    user: { connect: { id: 1 } },
     amount: total,
     currency: 'brl',
     status: 'pending',
@@ -82,12 +74,12 @@ export async function POST(req: Request) {
         return new Response("Order not found", { status: 404 });
       }
 
-      return NextResponse.json({ paymentIntent: updated_intent }, { status: 200 });
+      return NextResponse.json({ paymentIntent: updated_intent }, { status: 200})
     }
 
   } else {
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: total,
+      amount: calculateOrderAmount(items),
       currency: 'brl',
       automatic_payment_methods: { enabled: true },
     });
@@ -96,8 +88,9 @@ export async function POST(req: Request) {
 
     const newOrder = await prisma.order.create({
       data: orderData
-    });
-
-    return NextResponse.json({ paymentIntent }, { status: 200 });
+    })
+    
+    return NextResponse.json({ paymentIntent }, { status: 200})
   }
+
 }
