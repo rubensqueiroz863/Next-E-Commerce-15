@@ -20,7 +20,7 @@ export default function Checkout() {
       },
       body: JSON.stringify({
         items: cartStore.cart,
-        payment_intent_id: cartStore.paymentIntent.id,
+        payment_intent_id: cartStore.paymentIntent?.id,
       }),
     }).then((res) => { return res.json() }).then((data) => {
       cartStore.setPaymentIntent(data.paymentIntent);
