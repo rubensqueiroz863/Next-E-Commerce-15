@@ -29,7 +29,7 @@ export default async function Product({
   const product = await getProduct(id);
 
   return (
-    <div className="flex flex-col md:flex-row items-center bg-neutral-900 max-w-7xl mx-auto gap-8 p-10 m-10">
+    <div className="flex flex-col md:flex-row items-center rounded-sm bg-neutral-900 max-w-7xl mx-auto gap-8 p-10 m-10">
       <div className="flex p-3 bg-neutral-600 rounded-sm">
         <ProductImage product={product} />
       </div>

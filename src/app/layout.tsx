@@ -31,7 +31,7 @@ export default function RootLayout({
     <ClerkProvider localization={ptBR}>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-700`}>
+          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-neutral-600`}>
           <Hydrate>
             <NavBar/>
             <main className="bg-neutral-600 h-screen p-16 overflow-y-auto overflow-x-hidden">{children}</main>
