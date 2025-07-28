@@ -71,10 +71,10 @@ export async function POST(req: Request) {
       ]);
 
       if (!existing_order) {
-        return new Response("Order not found", { status: 404 });
+        return NextResponse.json({ error: "Order not found"}, { status: 401 });
       }
 
-      return NextResponse.json({ paymentIntent: updated_intent }, { status: 200})
+      return NextResponse.json({ paymentIntent: updated_intent }, { status: 200});
     }
 
   } else {

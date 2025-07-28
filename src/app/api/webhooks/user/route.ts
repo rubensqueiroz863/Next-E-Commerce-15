@@ -4,6 +4,7 @@ import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { Webhook, WebhookRequiredHeaders } from 'svix';
 import Stripe from 'stripe';
+import { stripe } from '@/lib/stripe'
 
 const webhookSecret = process.env.CLERK_WEBHOOK_SECRET || '';
 
@@ -62,19 +63,11 @@ async function handler(request: Request) {
       ...attributes
     } = evt.data;
 
-    // inserir usuario no stripe
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-      apiVersion: '2022-11-15',
-    });
-
-    console.log('🔄 Criando cliente no Stripe:', first_name, last_name);
-
     const customer = await stripe.customers.create({
       name: `${first_name} ${last_name}`,
       email: email_addresses ? email_addresses[0].email_address : '',
     });
 
-    console.log('✅ Cliente criado no Stripe:', customer.id);
     try {
       await prisma.user.upsert({
         where: { externalId: id as string },
@@ -87,13 +80,11 @@ async function handler(request: Request) {
           attributes,
         },
       });
-      console.log("usuario gravado com sucesso.");
     } catch (err) {
       console.error("Erro ao gravar no banco: ", err);
     }
     
   }
-  console.log('✅ Evento verificado com sucesso:', evt.type);
 
   return NextResponse.json({}, { status: 200 });
 }
