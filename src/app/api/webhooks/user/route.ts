@@ -34,12 +34,12 @@ async function handler(request: Request) {
   const headersList = headers();
 
   const heads = {
-    'svix-id': headersList.get('svix-id'),
-    'svix-timestamp': headersList.get('svix-timestamp'),
-    'svix-signature': headersList.get('svix-signature'),
+    'svix-id': (await headersList).get('svix-id'),
+    'svix-timestamp': (await headersList).get('svix-timestamp'),
+    'svix-signature': (await headersList).get('svix-signature'),
   };
 
-  const wh = new Webhook(webhookSecret);
+  const wh = new Webhook(webhookSecret!);
   let evt: Event;
 
   try {
