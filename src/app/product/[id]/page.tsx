@@ -2,6 +2,7 @@ import AddCart from "@/app/components/AddCart";
 import ProductImage from "@/app/components/ProductImage";
 import { formatPrice } from "@/lib/utils";
 import { stripe } from "@/lib/stripe";
+import AddCartWithMessage from "@/app/components/AddCartWithMessage";
 
 async function getProduct(id: string) {
   const product = await stripe.products.retrieve(id);
@@ -45,7 +46,7 @@ export default async function Product({
           <p className="text-sm text-white">{product.description}</p>
         </div>
         <div>
-          <AddCart product={product} />
+          <AddCartWithMessage product={product}/>
         </div>
       </div>
     </div>

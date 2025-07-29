@@ -2,8 +2,10 @@
 import { formatPrice } from '@/lib/utils';
 import { useCartStore } from '@/store';
 import Image from 'next/image';
+import { animate, motion } from 'framer-motion';
 import CheckoutButton from './CheckoutButton';
 import Checkout from './Checkout';
+import OrderCompleted from './OrderCompleted';
 
 export default function CartDrawer() {
   const useStore = useCartStore();
@@ -13,12 +15,16 @@ export default function CartDrawer() {
   }, 0);
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0}}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
       onClick={() => useStore.toggleCart()}
       className='fixed w-full h-screen bg-black/25 left-0 top-0 z-50'
     >
       
-      <div
+      <motion.div layout
         onClick={(e) => e.stopPropagation()}
         className='absolute overflow-x-hidden w-2/3 sm:w-4/5 md:w-2/5 lg:1/5 xl:1/5 2xl:1/5 bg-neutral-800 right-0 top-0 h-screen p-8 overflow-y-auto'
       >
@@ -32,7 +38,11 @@ export default function CartDrawer() {
         {useStore.onCheckout === 'cart' && (
           <>
             {useStore.cart.map((item) => (
-              <div key={item.id} className='flex gap-4 py-4'>
+              <motion.div
+                animate={{ scale: 1, rotateZ: 0, opacity: 1}}
+                initial={{ scale: 0.5, rotateZ: -10, opacity: 0 }}
+                exit={{ scale: 0.5, rotateZ: -10, opacity: 0 }}
+                key={item.id} className='flex gap-4 py-4'>
                 <Image
                   src={item.image}
                   alt={item.name}
@@ -59,7 +69,7 @@ export default function CartDrawer() {
                     Remover
                   </button>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </>
         )}
@@ -67,12 +77,9 @@ export default function CartDrawer() {
             <CheckoutButton totalPrice={totalPrice}/>
         )}
 
-        {useStore.onCheckout === 'checkout' && (
-            <div>
-              <Checkout />
-            </div>
-        )}
-      </div>
-    </div>
+        {useStore.onCheckout === 'checkout' && (<Checkout/>)}
+        {useStore.onCheckout === 'success' && (<OrderCompleted/>)} 
+      </motion.div>
+    </motion.div>
   );
 }
